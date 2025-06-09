@@ -1,0 +1,92 @@
+function join(){ // 회원가입 기능
+    let form = document.querySelector("#join_form"); // 로그인 폼 식별자
+    let name = document.querySelector("#form3Example1c");
+    let email = document.querySelector("#form3Example3c");
+    let password = document.querySelector("#form3Example4c");
+    let re_password = document.querySelector("#form3Example4cd");
+    let agree = document.querySelector("#form2Example3c");
+    form.action = "../index.html"; // 로그인 성공 시 이동
+    form.method = "get"; // 전송 방식
+    if(name.value.length === 0 || email.value.length === 0 || password.value.length === 0 || re_password.length === 0){
+    alert("회원가입 폼에 모든 정보를 입력해주세요.");
+    }
+    else{
+        const newSignUp = new SignUp(name.value, email.value, password.value, re_password.value); // 회원가입 정보 객체 생성
+        session_set2(newSignUp); // 세션 저장 및 객체 전달
+    form.submit(); // 폼 실행
+    }
+    }
+    document.getElementById("join_btn").addEventListener('click', join); // 이벤트 리스너
+    달 받아 초기화
+class SignUp {
+constructor(name, email, password, re_password) {
+// 생성자 함수: 객체 생성 시 회원 정보 초기화
+this._name = name;
+this._email = email;
+this._password = password;
+this._re_password = re_password;
+}
+// 전체 회원 정보를 한 번에 설정하는 함수
+setUserInfo(name, email, password, re_password) {
+this._name = name;
+this._email = email;
+this._password = password;
+this._re_password = re_password;
+}
+// 전체 회원 정보를 한 번에 가져오는 함수
+getUserInfo() {
+return {
+name: this._name,
+email: this._email,
+password: this._password,
+re_password: this._re_password
+};
+import { session_set2 } from './session.js';
+
+<form method="get" action="/login/index_login.html"></form>
+</form>
+
+<input type="email" id="typeEmailX" class="form-control form-control-lg" name="id" />
+<label class="form-label" for="typeEmailX">이메일</label>
+</div>
+<div data-mdb-input-init class="form-outline form-white mb-4">
+<input type="password" id="typePasswordX" class="form-control form-control-lg" name="password" />
+<label class="form-label" for="typePasswordX">패스워드</label>
+</div>
+
+<div class="checkbox mb-3">
+    <label>
+    <input type="checkbox" value="remember-me" id="idSaveCheck"> 아이디 기억
+    </label>
+    </div>
+
+    // 전역 변수 추가, 맨 위 위치
+const idsave_check = document.getElementById('idSaveCheck’);
+// 검사 마무리 단계 쿠키 저장, 최하단 submit 이전
+if(idsave_check.checked == true) { // 아이디 체크 o
+alert("쿠키를 저장합니다.", emailValue);
+setCookie("id", emailValue, 1); // 1일 저장
+alert("쿠키 값 :" + emailValue);
+}
+else{ // 아이디 체크 x
+setCookie("id", emailValue.value, 0); //날짜를 0 - 쿠키 삭제
+}
+
+function init(){ // 로그인 폼에 쿠키에서 가져온 아이디 입력
+    const emailInput = document.getElementById('typeEmailX');
+    const idsave_check = document.getElementById('idSaveCheck');
+    let get_id = getCookie("id");
+    if(get_id) {
+    emailInput.value = get_id;
+    idsave_check.checked = true;
+    }
+    }
+
+    <body class="text-center" onload="init();"></body>
+
+    <div>
+        <p class="mb-0">계정이 없나요? <a href="/login/join.html" class="text-white-50 fw-bold">회원가입</a>
+        </p>
+    </div>
+
+    

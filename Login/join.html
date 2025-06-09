@@ -1,0 +1,110 @@
+<section class="vh-100 gradient-custom"></section>
+<form class="mx-1 mx-md-4" id="join_form">
+    <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" id="join_btn">가입하기</button>
+
+    function join(){ // 회원가입 기능
+        let form = document.querySelector("#join_form"); // 로그인 폼 식별자
+        let name = document.querySelector("#form3Example1c");
+        let email = document.querySelector("#form3Example3c");
+        let password = document.querySelector("#form3Example4c");
+        let re_password = document.querySelector("#form3Example4cd");
+        let agree = document.querySelector("#form2Example3c");
+        form.action = "../index.html"; // 로그인 성공 시 이동
+        form.method = "get"; // 전송 방식
+        if(name.value.length === 0 || email.value.length === 0 || password.value.length === 0 || re_password.length === 0){
+        alert("회원가입 폼에 모든 정보를 입력해주세요.");
+        }
+        else{
+        form.submit(); // 폼 실행
+        }
+        }
+        document.getElementById("join_btn").addEventListener('click', join); // 이벤트 리스너
+
+        class SignUp {
+            constructor(name, email, password, re_password) {
+            // 생성자 함수: 객체 생성 시 회원 정보 초기화
+            this._name = name;
+            this._email = email;
+            this._password = password;
+            this._re_password = re_password;
+            }
+
+            if(name.value.length === 0 || email.value.length === 0 || password.value.length === 0 || re_password.length === 0){
+                alert("회원가입 폼에 모든 정보를 입력해주세요.");
+                }
+                else{
+                const newSignUp = new SignUp(name.value, email.value, password.value, re_password.value); // 회원가입 정보 객체 생성
+                session_set2(newSignUp); // 세션 저장 및 객체 전달
+                form.submit(); // 폼 실행
+                }
+
+                import { session_set2 } from './session.js';
+
+                const nameRegex = /^[가-힣]+$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const pwRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+if (!nameRegex.test(name.value)) { // 이름 검사
+alert("이름은 한글만 입력 가능합니다.");
+name.focus();
+return;
+}
+if (!emailRegex.test(email.value)) { // 이메일 검사
+alert("이메일 형식이 올바르지 않습니다.");
+email.focus();
+return;
+}
+
+if (!pwRegex.test(password.value)) { // 비밀번호 검사
+    alert("비밀번호는 8자 이상이며 대소문자, 숫자, 특수문자를 모두 포함해야 합니다.");
+    password.focus();
+    return;
+    }
+    if (password.value !== re_password.value) { // 비밀번호 일치 검사
+    alert("비밀번호가 일치하지 않습니다.");
+    re_password.focus();
+    return;
+    }
+    if (!agree.checked) { // 약관 동의 확인
+    alert("약관에 동의하셔야 가입이 가능합니다.");
+    return;
+    }
+
+    / 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+var mapTypeControl = new kakao.maps.MapTypeControl();
+// 지도 타입 컨트롤을 지도에 표시합니다
+map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+// 지도 확대 축소를 제어할 수 있는 줌 컨트롤을 생성합니다
+var zoomControl = new kakao.maps.ZoomControl();
+map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+// 지도에 지형정보를 표시하도록 지도타입을 추가합니다
+map.addOverlayMapTypeId(kakao.maps.MapTypeId.TERRAIN);
+
+// 지도에 마커를 표시합니다
+marker.setMap(map);
+// 지도에 클릭 이벤트를 등록합니다
+// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+// 클릭한 위도, 경도 정보를 가져옵니다
+var latlng = mouseEvent.latLng;
+// 마커 위치를 클릭한 위치로 옮깁니다
+marker.setPosition(latlng);
+var message =
+'클릭한 위치의 위도는' + latlng.getLat() + ' 이고, ';
+message += '경도는' + latlng.getLng() + ' 입니다';
+var resultDiv = document.getElementById('clickLatlng');
+resultDiv.innerHTML = message;
+});
+
+<p><em>지도를 클릭해주세요!</em></p>
+<div id="clickLatlng"></div>
+
+// 마커를 담을 배열입니다
+var markers = [];
+// 장소 검색 객체를 생성합니다
+var ps = new kakao.maps.services.Places();
+// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합
+니다
+var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+// 키워드로 장소를 검색합니다
+searchPlaces();
+
